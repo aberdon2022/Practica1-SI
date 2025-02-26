@@ -22,9 +22,15 @@ sql = """SELECT t.id AS ticket_id, t.fecha_apertura AS fecha_a, t.fecha_cierre A
 
 df = pd.read_sql_query(sql, con)
 
-pd.set_option('display.max_columns', None)
-pd.set_option('display.max_rows', None)
+con.close()
 
 df = update_fecha_cierre(df)
 
-print(df.to_string())
+print("Número de muestras totales del dataframe",df.shape[0])
+
+df_mayor_5 = df[df['satisfaccion_cliente'] >= 5]
+
+cuenta_incidentes = df_mayor_5.groupby('cliente').size()
+
+print("Media incidentes con satisfacción mayor o igual a 5:", cuenta_incidentes.mean())
+print("Desviación estándar incidentes con satisfacción mayor o igual a 5:", cuenta_incidentes.std())
