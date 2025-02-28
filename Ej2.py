@@ -34,3 +34,13 @@ cuenta_incidentes = df_mayor_5.groupby('cliente').size()
 
 print("Media incidentes con satisfacción mayor o igual a 5:", cuenta_incidentes.mean())
 print("Desviación estándar incidentes con satisfacción mayor o igual a 5:", cuenta_incidentes.std())
+
+incidentes_por_cliente= df.groupby('cliente').size()
+
+print("Media del número de incidentes por cliente:", incidentes_por_cliente.mean())
+print("Desviación estándar del número de incidentes por cliente:", incidentes_por_cliente.std())
+
+horas_por_tiquet = df.groupby('ticket_id')['tiempo'].sum().reset_index()
+
+print("Media del número de horas totales realizadas en cada incidente:", horas_por_tiquet['tiempo'].mean())
+print("Desviación estándar del número de horas totales realizadas en cada incidente:", horas_por_tiquet['tiempo'].std())
