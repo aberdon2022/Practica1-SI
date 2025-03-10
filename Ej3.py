@@ -29,15 +29,17 @@ df = update_fecha_cierre(df)
 df['fecha_a'] = pd.to_datetime(df['fecha_a'])
 df['dia'] = df['fecha_a'].dt.day_name()
 
+# Número de incidentes
+
 df_por_empleado_fraude = df[df['tipo_incidencia'] == 'Fraude'].groupby('empleado').agg({'ticket_id': 'count'}).reset_index().rename(columns={'ticket_id': 'count'})
-
 df_por_nivel_fraude = df[df['tipo_incidencia'] == 'Fraude'].groupby('nivel_empleado').agg({'ticket_id': 'count'}).reset_index().rename(columns={'ticket_id': 'count'})
-
 df_por_cliente_fraude = df[df['tipo_incidencia'] == 'Fraude'].groupby('cliente').agg({'ticket_id': 'count'}).reset_index().rename(columns={'ticket_id': 'count'})
+df_por_dia_fraude = df[df['tipo_incidencia'] == 'Fraude'].groupby('dia').agg({'ticket_id': 'count'}).reset_index().rename(columns={'ticket_id': 'count'})
 
 print(df_por_empleado_fraude.to_string())
 print(df_por_nivel_fraude.to_string())
 print(df_por_cliente_fraude.to_string())
+print(df_por_dia_fraude.to_string())
 
 # Numero de actuaciones por empleado
 
