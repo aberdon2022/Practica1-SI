@@ -65,6 +65,36 @@ for i, tipo in enumerate(df['tipo_incidencia'].unique()):
 plt.tight_layout()
 plt.show()
 
+#mostrar 5 clientes más criticos
+df_mantenimiento = df[(df['es_mantenimiento'] == 1) & (df['tipo_incidencia'] != '1')] #incidentes de mantenimiento y excluimos los incidentes de tipo 1
+
+clientes_criticos = df_mantenimiento.groupby('cliente')['ticket_id'].nunique().sort_values(ascending=False).head(5) #contamos incidentes por cliente
+
+#print("Clientes más críticos:")
+#print(clientes_criticos)
+
+clientes_criticos.plot(kind='bar', color='green')
+plt.xlabel('Cliente')
+plt.ylabel('Número de Incidentes')
+plt.title('Top 5 Clientes Más Críticos')
+plt.xticks(rotation=45)
+plt.tight_layout()
+plt.show()
+
+#mostrar nm total de actuaciones realizadas en los empleados
+actuaciones_empleados = df.groupby('empleado')['ticket_id'].nunique().sort_values(ascending=False) #nm total de actuaciones realizadas por los empleados
+
+#print("Número total de actuaciones realizadas por empleados:")
+#print(actuaciones_empleados)
+
+actuaciones_empleados.plot(kind='bar', color='blue')
+plt.xlabel('Empleado')
+plt.ylabel('Número de Actuaciones')
+plt.title('Total de Actuaciones Realizadas por los Empleados')
+plt.xticks(rotation=45)
+plt.tight_layout()
+plt.show()
+
 # Mostrar según el día de la semana el total de actuaciones realizadas en los clientes
 df['fecha_atencion_ticket'] = pd.to_datetime(df['fecha_atencion_ticket'])
 df['dia'] = df['fecha_atencion_ticket'].dt.day_name()
