@@ -62,4 +62,33 @@ for i, tipo in enumerate(df['tipo_incidencia'].unique()):
     p90 = percentiles.loc[tipo, 0.90]
     plt.plot([i+1, i+1], [p5, p90], color='red', linewidth=2, linestyle='dashed')
 
+plt.tight_layout()
+plt.show()
+
+# Mostrar según el día de la semana el total de actuaciones realizadas en los clientes
+df['fecha_atencion_ticket'] = pd.to_datetime(df['fecha_atencion_ticket'])
+df['dia'] = df['fecha_atencion_ticket'].dt.day_name()
+
+dias = {
+    'Monday': 'Lunes',
+    'Tuesday': 'Martes',
+    'Wednesday': 'Miércoles',
+    'Thursday': 'Jueves',
+    'Friday': 'Viernes',
+    'Saturday': 'Sábado',
+    'Sunday': 'Domingo'
+}
+
+df['dia'] = df['dia'].map(dias)
+
+df['dia'] = pd.Categorical(df['dia'], categories=[r'Lunes', r'Martes', r'Miércoles', r'Jueves', r'Viernes', r'Sábado', r'Domingo'], ordered=True)
+
+print(df['dia'].value_counts().sort_index())
+
+ax = df['dia'].value_counts().sort_index().plot(kind='bar')
+plt.xlabel(r'Dia de la Semana')
+plt.ylabel(r'Actuaciones Realizadas')
+plt.title(r'Acciones por día de la semana')
+plt.xticks(rotation=45)
+plt.tight_layout()
 plt.show()
