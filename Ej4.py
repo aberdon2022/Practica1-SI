@@ -115,7 +115,7 @@ df['dia'] = pd.Categorical(df['dia'], categories=[r'Lunes', r'Martes', r'Miérco
 
 print(df['dia'].value_counts().sort_index())
 
-ax = df['dia'].value_counts().sort_index().plot(kind='bar')
+df['dia'].value_counts().sort_index().plot(kind='bar')
 plt.xlabel(r'Dia de la Semana')
 plt.ylabel(r'Actuaciones Realizadas')
 plt.title(r'Acciones por día de la semana')
