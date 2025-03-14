@@ -32,7 +32,7 @@ df = update_fecha_cierre(df)
 df['fecha_a'] = pd.to_datetime(df['fecha_a'])
 df['fecha_c'] = pd.to_datetime(df['fecha_c'])
 
-df['tiempo_resolucion'] = (df['fecha_c'] - df['fecha_a']).dt.total_seconds() / 86400  # Convertir segundos a días
+df['tiempo_resolucion'] = (df['fecha_c'] - df['fecha_a']).dt.total_seconds() / 86400
 
 # Calcular la media por tipo de mantenimiento con pandas
 media_tiempo_mantenimiento = df.groupby('es_mantenimiento')['tiempo_resolucion'].mean()
@@ -53,7 +53,7 @@ df.boxplot(column='tiempo_resolucion', by='tipo_incidencia', grid=False, showfli
 plt.xlabel("Tipo de Incidente")
 plt.ylabel("Tiempo de Resolución (días)")
 plt.title("Distribución de tiempos de resolución por tipo de incidente (Percentiles 5%-90%)")
-plt.suptitle("")  # Eliminar título automático extra
+plt.suptitle("")
 plt.xticks(rotation=45)
 
 # Dibujar líneas de percentiles 5% y 90%
