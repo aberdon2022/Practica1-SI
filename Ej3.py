@@ -48,11 +48,13 @@ print(df_por_dia_fraude.to_string())
 df_contactos_empleado = df[df['tipo_incidencia'] == 'Fraude'].groupby('empleado').agg({'fecha_atencion_ticket': 'count'}).reset_index().rename(columns={'fecha_atencion_ticket': 'count'})
 df_contactos_empleado_por_nivel = df[df['tipo_incidencia'] == 'Fraude'].groupby(['nivel_empleado']).agg({'fecha_atencion_ticket': 'count'}).reset_index().rename(columns={'fecha_atencion_ticket': 'count'})
 df_contactos_cliente = df[df['tipo_incidencia'] == 'Fraude'].groupby(['cliente']).agg({'fecha_atencion_ticket': 'count'}).reset_index().rename(columns={'fecha_atencion_ticket': 'count'})
-df_contactos_por_dia = df[df['tipo_incidencia'] == 'Fraude'].groupby(['dia']).agg({'fecha_atencion_ticket': 'count'}).reset_index().rename(columns={'fecha_atencion_ticket': 'count'})
+df_contactos_tipo_incidencia = df.groupby('tipo_incidencia').agg({'fecha_atencion_ticket': 'count'}).reset_index().rename(columns={'fecha_atencion_ticket': 'count'})
+df_contactos_por_dia = df[df['tipo_incidencia'] == 'Fraude'].groupby('dia').agg({'fecha_atencion_ticket': 'count'}).reset_index().rename(columns={'fecha_atencion_ticket': 'count'})
 
 print(df_contactos_empleado.to_string())
 print(df_contactos_empleado_por_nivel.to_string())
 print(df_contactos_cliente.to_string())
+print(df_contactos_tipo_incidencia.to_string())
 print(df_contactos_por_dia.to_string())
 
 #Analisis estadistico
