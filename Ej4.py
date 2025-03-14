@@ -45,14 +45,15 @@ plt.xticks(ticks=[0, 1], labels=['No', 'Sí'], rotation=0)
 plt.show()
 
 # Calcular percentiles 5% y 90% por tipo de incidente con pandas
-percentiles = df.groupby('tipo_incidencia')['tiempo_resolucion'].quantile([0.05, 0.90]).unstack()
+df_ticket = df.groupby('ticket_id').agg(tiempo_resolucion=('tiempo_resolucion', 'sum'),tipo_incidencia=('tipo_incidencia', 'first')).reset_index()
+percentiles = df_ticket.groupby('tipo_incidencia')['tiempo_resolucion'].quantile([0.05, 0.90]).unstack()
 
 print(percentiles)
 
-df.boxplot(column='tiempo_resolucion', by='tipo_incidencia', grid=False, showfliers=False)
+df_ticket.boxplot(column='tiempo_resolucion', by='tipo_incidencia', grid=False, showfliers=False)
 plt.xlabel("Tipo de Incidente")
 plt.ylabel("Tiempo de Resolución (días)")
-plt.title("Distribución de tiempos de resolución por tipo de incidente (Percentiles 5%-90%)")
+plt.title("Tiempos de resolución por tipo de incidente (Percentiles 5%-90%)")
 plt.suptitle("")
 plt.xticks(rotation=45)
 
