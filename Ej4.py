@@ -1,7 +1,6 @@
 import sqlite3
 import pandas as pd
 import matplotlib.pyplot as plt
-import plotly.express as px
 
 
 def update_fecha_cierre(df):
@@ -48,7 +47,7 @@ plt.show()
 df_ticket = df.groupby('ticket_id').agg(tiempo_resolucion=('tiempo_resolucion', 'sum'),tipo_incidencia=('tipo_incidencia', 'first')).reset_index()
 percentiles = df_ticket.groupby('tipo_incidencia')['tiempo_resolucion'].quantile([0.05, 0.90]).unstack()
 
-print(percentiles)
+#print(percentiles)
 
 df_ticket.boxplot(column='tiempo_resolucion', by='tipo_incidencia', grid=False, showfliers=False)
 plt.xlabel("Tipo de Incidente")
@@ -114,7 +113,7 @@ df['dia'] = df['dia'].map(dias)
 
 df['dia'] = pd.Categorical(df['dia'], categories=[r'Lunes', r'Martes', r'Miércoles', r'Jueves', r'Viernes', r'Sábado', r'Domingo'], ordered=True)
 
-print(df['dia'].value_counts().sort_index())
+#print(df['dia'].value_counts().sort_index())
 
 df['dia'].value_counts().sort_index().plot(kind='bar')
 plt.xlabel(r'Dia de la Semana')
