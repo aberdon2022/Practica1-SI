@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href = "{{ url_for('static', filename = 'css/styles.css') }}">
+    <title>Gráficos</title>
+</head>
+<body>
+    <h2>Gráfico 1 - Tiempo Medio de Resolución</h2>
+    {{ results.grafico1|safe }}
+
+    <h2>Gráfico 2 - Tiempos de Resolución por Tipo de Incidente</h2>
+    {{ results.grafico2|safe }}
+
+    <h2>Gráfico 3 - Top 5 Clientes Más Críticos</h2>
+    {{ results.grafico3|safe }}
+
+    <h2>Gráfico 4 - Total de Actuaciones Realizadas por los Empleados</h2>
+    {{ results.grafico4|safe }}
+
+    <h2>Gráfico 5 - Actuaciones por Día de la Semana</h2>
+    {{ results.grafico5|safe }}
+</body>
+</html>
