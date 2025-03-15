@@ -213,7 +213,7 @@ def res_ej4():
 def ejercicios(ejercicio):
     if ejercicio == 'ej2':
         results = res_ej2()
-        return render_template('ej2.html', **results)
+        return render_template('ej2.html', results=results)
     elif ejercicio == 'ej3':
         results = res_ej3()
         return render_template('ej3.html', results=results)
