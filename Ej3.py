@@ -65,6 +65,18 @@ estadisticas_cliente = df[df['tipo_incidencia'] == 'Fraude'].groupby('cliente').
 estadisticas_tipo_incidencia = df.groupby('tipo_incidencia').agg({'ticket_id':['count','median', 'mean', 'var', 'min', 'max']}).reset_index()
 estadisticas_dia = df[df['tipo_incidencia'] == 'Fraude'].groupby('dia').agg({'ticket_id':['count','median', 'mean', 'var', 'min', 'max']}).reset_index()
 
+dias = {
+    'Monday': 'Lunes',
+    'Tuesday': 'Martes',
+    'Wednesday': 'Miércoles',
+    'Thursday': 'Jueves',
+    'Friday': 'Viernes',
+    'Saturday': 'Sábado',
+    'Sunday': 'Domingo'
+}
+
+estadisticas_dia['dia'] = estadisticas_dia['dia'].map(dias)
+
 print()
 print("Estadisticas por empleado\n" + estadisticas_empleado.to_string() + "\n")
 print("Estadisticas por nivel de empleado\n" + estadisticas_nivel.to_string() + "\n")
