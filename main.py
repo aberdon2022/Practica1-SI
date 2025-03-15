@@ -10,7 +10,6 @@ def update_fecha_cierre(df):
     return df
 
 def get_df():
-    results = []
     con = sqlite3.connect('test.db')
     sql = """SELECT t.id AS ticket_id, t.fecha_apertura AS fecha_a, t.fecha_cierre AS fecha_c, 
            t.es_mantenimiento, 
