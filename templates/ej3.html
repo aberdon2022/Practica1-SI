@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Estadísticas de Fraude</title>
+    <link rel="stylesheet" href = "{{ url_for('static', filename = 'css/styles.css') }}">
+</head>
+<body>
+    <h1>Estadísticas de Fraude</h1>
+
+    <h2>Número de incidentes por empleado</h2>
+    {{ results["df_por_empleado_fraude"]|safe }}
+
+    <h2>Número de incidentes por nivel</h2>
+    {{ results["df_por_nivel_fraude"]|safe }}
+
+    <h2>Número de incidentes por cliente</h2>
+    {{ results["df_por_cliente_fraude"]|safe }}
+
+    <h2>Número de incidentes tipo de incidencia</h2>
+    {{ results["df_por_tipo_incidencia"]|safe }}
+
+    <h2>Número de incidentes por día</h2>
+    {{ results["df_por_dia_fraude"]|safe }}
+
+    <h2>Contactos por empleado</h2>
+    {{ results["df_contactos_empleado"]|safe }}
+
+    <h2>Contactos por nivel de empleado</h2>
+    {{ results["df_contactos_empleado_por_nivel"]|safe }}
+
+    <h2>Contactos por cliente</h2>
+    {{ results["df_contactos_cliente"]|safe }}
+
+    <h2>Contactos por tipo de incidencia</h2>
+    {{ results["df_contactos_tipo_incidencia"]|safe }}
+
+    <h2>Contactos por día</h2>
+    {{ results["df_contactos_por_dia"]|safe }}
+
+    <h2>Estadísticas por empleado</h2>
+    {{ results["estadisticas_empleado"]|safe }}
+
+    <h2>Estadísticas por nivel</h2>
+    {{ results["estadisticas_nivel"]|safe }}
+
+    <h2>Estadísticas por cliente</h2>
+    {{ results["estadisticas_cliente"]|safe }}
+
+    <h2>Estadísticas por tipo de incidencia</h2>
+    {{ results["estadisticas_tipo_incidencia"]|safe }}
+
+    <h2>Estadísticas por día</h2>
+    {{ results["estadisticas_dia"]|safe }}
+
+</body>
+</html>

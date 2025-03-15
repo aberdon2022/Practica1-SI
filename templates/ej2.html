@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <title>Resultados</title>
+    <link rel="stylesheet" href = "{{ url_for('static', filename = 'css/ej2.css') }}">
+  </head>
+  <body>
+    <h1>Resultados del Ejercicio 2</h1>
+    <ul>
+      <li>Número de muestras totales del dataframe: {{ total_muestras }}</li>
+      <li>Media incidentes con satisfacción &ge; 5: {{ media_incidentes }}</li>
+      <li>Desviación estándar incidentes con satisfacción &ge; 5: {{ std_incidentes }}</li>
+      <li>Media del número de incidentes por cliente: {{ media_incidentes_cliente }}</li>
+      <li>Desviación estándar del número de incidentes por cliente: {{ std_incidentes_cliente }}</li>
+      <li>Media del número de horas totales realizadas en cada incidente: {{ media_horas }}</li>
+      <li>Desviación estándar del número de horas totales realizadas en cada incidente: {{ std_horas }}</li>
+      <li>Valor mínimo de horas realizadas por empleado: {{ min_horas }}</li>
+      <li>Valor máximo de horas realizadas por empleado: {{ max_horas }}</li>
+      <li>Valor mínimo del tiempo entre apertura y cierre de incidente (horas): {{ min_tiempo }}</li>
+      <li>Valor máximo del tiempo entre apertura y cierre de incidente (horas): {{ max_tiempo }}</li>
+      <li>Valor mínimo del número de incidentes atendidos por empleado: {{ min_incidentes }}</li>
+      <li>Valor máximo del número de incidentes atendidos por empleado: {{ max_incidentes }}</li>
+    </ul>
+  </body>

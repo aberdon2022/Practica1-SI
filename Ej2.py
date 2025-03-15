@@ -44,3 +44,15 @@ horas_por_tiquet = df.groupby('ticket_id')['tiempo'].sum().reset_index()
 
 print("Media del número de horas totales realizadas en cada incidente:", horas_por_tiquet['tiempo'].mean())
 print("Desviación estándar del número de horas totales realizadas en cada incidente:", horas_por_tiquet['tiempo'].std())
+
+horas_por_empleado = df.groupby('empleado')['tiempo'].sum().reset_index()
+print("Valor mínimo de horas realizadas por empleado:", horas_por_empleado['tiempo'].min())
+print("Valor máximo de horas realizadas por empleado:", horas_por_empleado['tiempo'].max())
+
+df['tiempo_incidente'] = (pd.to_datetime(df['fecha_c']) - pd.to_datetime(df['fecha_a'])).dt.total_seconds() / 3600
+print("Valor mínimo del tiempo entre apertura y cierre de incidente (horas):", df['tiempo_incidente'].min())
+print("Valor máximo del tiempo entre apertura y cierre de incidente (horas):", df['tiempo_incidente'].max())
+
+incidentes_por_empleado = df.groupby('empleado').size()
+print("Valor mínimo del número de incidentes atendidos por empleado:", incidentes_por_empleado.min())
+print("Valor máximo del número de incidentes atendidos por empleado:", incidentes_por_empleado.max())
